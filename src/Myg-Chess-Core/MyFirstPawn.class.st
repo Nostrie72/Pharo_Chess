@@ -12,8 +12,6 @@ MyFirstPawn >> targetSquaresLegal: aBoolean [
 	firstSquare := super targetSquaresLegal: aBoolean.
 	targets := firstSquare.
 
-
-
 	"Déplacement de deux cases si sur la rangée initiale"
 
 	twoSteps := self isWhite
