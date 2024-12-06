@@ -5,6 +5,14 @@ Class {
 	#package : 'Myg-Chess-Core'
 }
 
+{ #category : 'as yet unclassified' }
+MyFirstPawn >> replacePawn: aNewPiece [ [
+
+	aNewPiece color: self color.
+	self board at: self square name put: aNewPiece
+]
+]
+
 { #category : 'rendering' }
 MyFirstPawn >> targetSquaresLegal: aBoolean [
 
