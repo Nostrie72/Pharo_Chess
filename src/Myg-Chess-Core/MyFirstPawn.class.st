@@ -6,11 +6,10 @@ Class {
 }
 
 { #category : 'as yet unclassified' }
-MyFirstPawn >> replacePawn: aNewPiece [ [
+MyFirstPawn >> replacePawn: aNewPiece [
 
 	aNewPiece color: self color.
-	self board at: self square name put: aNewPiece
-]
+	self board at: self square name put: aNewPiece 
 ]
 
 { #category : 'rendering' }
