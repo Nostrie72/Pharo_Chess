@@ -119,6 +119,18 @@ MyFirstPawnTest >> testFirstPawnIsWhite [
 ]
 
 { #category : 'tests' }
+MyFirstPawnTest >> testFirstPawnMoveTwoSquares [
+
+	| firstPawn board squares |
+	board := MyChessBoard empty.
+	board at: 'e2' put: (firstPawn := MyFirstPawn white).
+
+	"Vérifier que le pion peut se déplacer de deux cases lors de son premier mouvement"
+	squares := firstPawn targetSquaresLegal: true.
+	self assert: (squares includes: (board at: 'e4'))
+]
+
+{ #category : 'tests' }
 MyFirstPawnTest >> testFirstPawnWhiteBlocked [
 
 	| squares firstPawn simplePawn |
@@ -195,6 +207,17 @@ MyFirstPawnTest >> testPawnCannotMoveBackwards [
 
 	"Essayer de déplacer le pion en e3 (recul)"
 	self should: [ state clickOn: (board at: 'e3') ] raise: Error .
+]
+
+{ #category : 'tests' }
+MyFirstPawnTest >> testPawnFirstMoveTwoSquares [
+    | firstPawn board squares |
+    board := MyChessBoard empty.
+    board at: 'e2' put: (firstPawn := MyFirstPawn white).
+
+    "Vérifier que le pion peut se déplacer de deux cases lors de son premier mouvement"
+    squares := firstPawn targetSquaresLegal: true.
+    self assert: (squares includes: (board at: 'e4')).
 ]
 
 { #category : 'tests' }
