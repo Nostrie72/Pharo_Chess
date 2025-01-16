@@ -17,8 +17,21 @@ MyFirstPawnTest >> setUp [
 	"Put here a common initialization logic for tests"
 	board := MyChessBoard empty.
 	board initializeSquares.
-	pawn := MyPawn black.
-	board at: 'e1' put: pawn
+	"pawn := MyPawn black.
+	board at: 'e1' put: pawn"
+]
+
+{ #category : 'tests' }
+MyFirstPawnTest >> testFirstPawnBlocked [
+
+	| squares firstPawn simplePawn |
+	firstPawn := MyFirstPawn white.
+	simplePawn := MyFirstPawn black.
+	board at: 'c4' put: firstPawn.
+	board at: 'c5' put: simplePawn.
+
+	squares := firstPawn targetSquares.
+	self assert: squares isEmptyOrNil
 ]
 
 { #category : 'tests' }
@@ -57,12 +70,11 @@ MyFirstPawnTest >> testPawnIsWhite [
 { #category : 'tests' }
 MyFirstPawnTest >> testReplacePawn [
 
-	
 	| oldPiece newPiece square |
-	oldPiece := MyPawn black.
-	newPiece := MyFirstPawn black.
-	square := board at: 'e4'.
-	board at: 'e4' put: oldPiece.
+	newPiece := MyPawn black.
+	oldPiece := MyFirstPawn black.
+	square := board at: 'f4'.
+	board at: 'f4' put: oldPiece.
 	oldPiece replacePawn: newPiece.
-	self assert: square contents equals: newPiece 
+	self assert: square contents equals: newPiece
 ]

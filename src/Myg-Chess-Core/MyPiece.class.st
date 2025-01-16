@@ -171,6 +171,13 @@ MyPiece >> moveTo: aSquare [
 	aSquare contents: self
 ]
 
+{ #category : 'as yet unclassified' }
+MyPiece >> replacePawn: aNewPiece [
+
+	aNewPiece color: self color.
+	self board at: self square name put: aNewPiece
+]
+
 { #category : 'rendering' }
 MyPiece >> rightFile [
 

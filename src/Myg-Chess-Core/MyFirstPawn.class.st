@@ -5,11 +5,12 @@ Class {
 	#package : 'Myg-Chess-Core'
 }
 
-{ #category : 'as yet unclassified' }
-MyFirstPawn >> replacePawn: aNewPiece [
+{ #category : 'path commands' }
+MyFirstPawn >> moveTo: aSquare [
 
-	aNewPiece color: self color.
-	self board at: self square name put: aNewPiece 
+	super moveTo: aSquare.
+
+	self replacePawn: MyPawn new.
 ]
 
 { #category : 'rendering' }
@@ -19,13 +20,19 @@ MyFirstPawn >> targetSquaresLegal: aBoolean [
 	firstSquare := super targetSquaresLegal: aBoolean.
 	targets := firstSquare.
 
-	"Déplacement de deux cases si sur la rangée initiale"
-
 	twoSteps := self isWhite
 		            ifTrue: [ square up up ]
 		            ifFalse: [ square down down ].
 	(twoSteps notNil and: [ twoSteps hasPiece not ]) ifTrue: [
-		targets add: twoSteps ].
+		"Vérifier que la première case (un déplacement) est aussi vide"
+		((self isWhite
+			ifTrue: [ square up ] 
+			ifFalse: [ square down ]) notNil and: [ 
+				(self isWhite 
+					ifTrue: [ square up ] 
+					ifFalse: [ square down ]) hasPiece not ]) ifTrue: [
+			targets add: twoSteps].].
 
 	^ targets
+	
 ]
