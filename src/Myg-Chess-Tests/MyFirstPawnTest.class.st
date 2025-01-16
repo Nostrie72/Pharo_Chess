@@ -64,7 +64,26 @@ MyFirstPawnTest >> testFirstPawnBlackCanCaptureOnLeftDiagonal [
 	"Le pion noir devrait pouvoir capturer le pion blanc en diagonale"
 	squares := simplePawn targetSquares.
 
-	"Vérification que d3 fait partie des mouvements possibles"
+	"Vérification que d2 fait partie des mouvements possibles"
+	self
+		assertCollection: squares
+		includesAll: (#( d2 ) collect: [ :name | board at: name ])
+]
+
+{ #category : 'tests' }
+MyFirstPawnTest >> testFirstPawnBlackCanCaptureOnRightDiagonal [
+
+	| squares firstPawn simplePawn |
+	firstPawn := MyFirstPawn white.
+	simplePawn := MyFirstPawn black.
+	board := MyChessBoard empty.
+	board at: 'd2' put: firstPawn.
+	board at: 'c3' put: simplePawn.
+
+	"Le pion noir devrait pouvoir capturer le pion blanc en diagonale"
+	squares := simplePawn targetSquares.
+
+	"Vérification que d2 fait partie des mouvements possibles"
 	self
 		assertCollection: squares
 		includesAll: (#( d2 ) collect: [ :name | board at: name ])
@@ -123,12 +142,12 @@ MyFirstPawnTest >> testFirstPawnWhiteCanCaptureOnLeftDiagonal [
 	board at: 'e3' put: simplePawn.
 
 	"Le pion blanc devrait pouvoir capturer le pion noir en diagonale"
-	squares := firstPawn targetSquares.
+	squares := simplePawn targetSquares.
 
 	"Vérification que e3 fait partie des mouvements possibles"
 	self
 		assertCollection: squares
-		includesAll: (#( e3 ) collect: [ :name | board at: name ])
+		includesAll: (#( d2 ) collect: [ :name | board at: name ])
 ]
 
 { #category : 'tests' }
