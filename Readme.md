@@ -4,10 +4,6 @@
 
 ### Fix Pawn Move
 
-Voici une version améliorée de votre texte, avec des corrections de style, de clarté, et de cohérence :
-
----
-
 ### Fonctionnalités à tester pour le refactoring
 
 Dans cette tâche, je me suis concentré sur les mouvements des pions. Les fonctionnalités à tester sont les suivantes :
